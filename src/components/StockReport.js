@@ -38,7 +38,7 @@ function StockReport() {
 
   // Fetch products from API
   const fetchProducts = () => {
-    axios.get('http://127.0.0.1:8000/api/products/', {
+    axios.get('http://213.109.146.205:8007/api/products/', {
       headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
     }).then(res => setProducts(res.data))
       .catch(err => console.error("Ошибка при получении продуктов:", err));
@@ -46,7 +46,7 @@ function StockReport() {
 
   // Fetch stock entries from API
   const fetchEntries = () => {
-    axios.get('http://127.0.0.1:8000/api/entries/', {
+    axios.get('http://213.109.146.205:8007/api/entries/', {
       headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
     }).then(res => setEntries(res.data))
       .catch(err => console.error("Ошибка при получении движений:", err));
@@ -62,7 +62,7 @@ function StockReport() {
       };
       console.log('Отправляемые данные:', payload); // Для отладки
       axios
-        .post('http://127.0.0.1:8000/api/entries/', payload, {
+        .post('http://213.109.146.205:8007/api/entries/', payload, {
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
         })
         .then(() => {
@@ -86,7 +86,7 @@ function StockReport() {
     if (newProduct.name && newProduct.sku && newProduct.unit && newProduct.quantity) {
       axios
         .post(
-          'http://127.0.0.1:8000/api/products/',
+          'http://213.109.146.205:8007/api/products/',
           newProduct,
           {
             headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
